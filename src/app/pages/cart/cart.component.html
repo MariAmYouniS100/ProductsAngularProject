@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <h3>Your Picks</h3>
+  
+    <div *ngIf="cartItems.length === 0" class="text-center">
+      <h3 class="text-danger">Your cart is empty!</h3>
+    </div>
+  
+    <div *ngIf="cartItems.length > 0">
+      <table class="table table-striped shadow">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" style="color: aliceblue; text-align: center;">Description</th>
+            <th scope="col" >Quantity</th>
+            <th scope="col">Remove</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems">
+            <td class="align-middle">
+              <img [src]="item.images[0]" [alt]="item.title" class="img-fluid" style="max-width: 80px;">
+              <span>{{ item.title }}</span>
+            </td>
+            <td class="align-middle" style="border: none;">
+                <button class="btn btn-dark" (click)="updateQuantity(item.id, item.stock + 1)">+</button>
+                <input type="text" disabled [(ngModel)]="item.stock" class="form-control d-inline" style="width: 50px;" min="1">
+                <button class="btn btn-dark" (click)="updateQuantity(item.id, item.stock - 1)">-</button>
+              </td>
+              
+            <td class="align-middle">
+              <button class="btn btn-danger" (click)="removeItem(item.id)">Delete</button>
+            </td >
+            <td class="align-middle">£{{ item.price * item.stock }}</td>
+          </tr>
+        </tbody> 
+      </table>
+      <div class=" " style="font-weight: 500; font-size: larger;">
+       <h4> Total: £{{ totalPrice  | number:'1.0-3'}} </h4> 
+      </div>
+    </div>
+  </div>
+  

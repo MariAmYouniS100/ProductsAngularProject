@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Login</h2>
+
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control" 
+              name="email" 
+              [(ngModel)]="email" 
+              #emailRef="ngModel"
+              required 
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            />
+            <!-- Error Messages -->
+            <small class="text-danger" *ngIf="emailRef.invalid && emailRef.touched">
+              {{ emailRef.errors?.['required'] ? 'Email is required' : 'Invalid email' }}
+            </small>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              class="form-control" 
+              name="password" 
+              [(ngModel)]="password" 
+              #passwordRef="ngModel"
+              required 
+            />
+            <!-- Error Message -->
+            <small class="text-danger" *ngIf="passwordRef.invalid && passwordRef.touched">
+              Password is required
+            </small>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

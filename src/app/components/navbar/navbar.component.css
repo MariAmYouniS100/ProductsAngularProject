@@ -1,0 +1,14 @@
+.active-link {
+    color: orange !important;
+    font-weight: bold;
+  }
+  .logo {
+    font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal; /* Try 'Poppins', sans-serif for modern look */
+  font-size: 1.8rem;  /* Adjust size */
+  font-weight: bold;
+  color: #fab005;  /* Gold color */
+  text-transform: uppercase;
+  letter-spacing: 1.5px;  /* Spacing for premium feel */
+}

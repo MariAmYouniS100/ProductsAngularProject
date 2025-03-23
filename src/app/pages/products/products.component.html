@@ -1,0 +1,92 @@
+<!--
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let product of products">
+
+      <div class="card shadow p-3 bg-white rounded text-center" 
+           (click)="goToDetails(product.id)" 
+           style="cursor: pointer;">
+        <img [src]="product.image" [alt]="product.name" 
+             class="card-img-top img-fluid" 
+             style="max-height: 200px; object-fit: contain;" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text fw-bold text-primary">
+            {{ product.price | currency: 'EGP' }}
+          </p>
+
+        
+          <div class="rating">
+            <ng-container *ngFor="let star of getStars(product.rate)">
+              <i class="fa fa-star" [ngClass]="star ? 'text-warning' : 'text-muted'"></i>
+            </ng-container>
+          </div>
+
+       
+          <p [ngClass]="{'text-success': product.stock > 0, 'text-danger': product.stock === 0}">
+            {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+          </p>
+
+   
+          <button class="btn btn-success w-100" [disabled]="product.stock === 0">
+            <i class="bi bi-cart"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
+      <!-- Clickable product card -->
+      <div class="card shadow p-3 bg-white rounded text-center" 
+           (click)="goToDetails(product.id)" 
+           style="cursor: pointer; transition: transform 0.2s ease-in-out;"
+           (mouseover)="hoverState[product.id] = true" 
+           (mouseleave)="hoverState[product.id] = false"
+           [ngStyle]="{ 'transform': hoverState[product.id] ? 'scale(1.05)' : 'scale(1)' }"
+           style="cursor: pointer; transition: transform 0.2s ease-in-out;"
+           (click)="goToDetails(product.id)">
+        <!-- Product Image -->
+        <img [src]="product.images" [alt]="product.title" 
+             class="card-img-top img-fluid p-3" 
+             style="max-height: 200px; object-fit: contain;" />
+        
+        <div class="card-body">
+          <!-- Product Name -->
+          <h5 class="card-title">{{ product.title }}</h5>
+
+          <!-- Price -->
+          <p class="card-text fw-bold text-primary">
+            {{ product.price | currency:'EGP ' }}
+          </p>
+
+          <!-- Rating -->
+          <div class="rating mb-2">
+            <ng-container *ngFor="let star of getStars(product.rating)">
+              <i class="fa fa-star" [ngClass]="star ? 'text-warning' : 'text-muted'"></i>
+            </ng-container>
+          </div>
+
+          <!-- Stock Availability -->
+          <p [ngClass]="{'text-success': product.stock > 0, 'text-danger': product.stock === 0}">
+            {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+          </p>
+
+          <!-- Add to Cart Button -->
+        
+          <div>
+            <button class="btn btn-success w-100"
+              (click)="addToCart(product);  $event.stopPropagation()"
+              [disabled]="product.stock === 0">
+            <i class="bi bi-cart"></i>Add to Cart
+            </button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

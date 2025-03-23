@@ -1,0 +1,23 @@
+<div class="card shadow-lg p-3 mb-4 bg-white rounded text-center">
+    <img [src]="product.image" [alt]="product.name" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain;" />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text fw-bold text-primary">{{ product.price | currency: 'EGP' }}</p>
+     
+
+      <div class="rating">
+        <ng-container *ngFor="let star of getStars(); let i = index">
+          <i class="fa" [ngClass]="star ? 'fa-star text-warning' : 'fa-star text-muted'"></i>
+        </ng-container>
+      </div>
+  
+      <p [ngClass]="{'text-success': product.stock > 0, 'text-danger': product.stock === 0}">
+        {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+      </p>
+  
+      <button class="btn btn-success w-100" [disabled]="product.stock === 0">
+        <i class="bi bi-cart"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+  
