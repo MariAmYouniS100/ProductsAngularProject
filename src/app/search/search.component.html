@@ -1,0 +1,51 @@
+
+  <div class="container mt-4">
+  <h2>Search Results for "{{ searchQuery }}"</h2>
+
+  <div *ngIf="filteredProducts.length > 0; else noResults" class="row">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of filteredProducts">
+      <div class="card shadow p-3 bg-white rounded text-center"
+           (click)="goToDetails(product.id)"
+           style="cursor: pointer; transition: transform 0.2s ease-in-out;"
+           (mouseover)="hoverState[product.id] = true"
+           (mouseleave)="hoverState[product.id] = false"
+           [ngStyle]="{ 'transform': hoverState[product.id] ? 'scale(1.05)' : 'scale(1)' }">
+
+        <img [src]="product.images" [alt]="product.title"
+             class="card-img-top img-fluid p-3"
+             style="max-height: 200px; object-fit: contain;" />
+
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+
+          <p class="card-text fw-bold text-primary">
+            {{ product.price | currency:'EGP ' }}
+          </p>
+
+          <div class="rating mb-2">
+            <ng-container *ngFor="let star of getStars(product.rating)">
+              <i class="fa fa-star" [ngClass]="star ? 'text-warning' : 'text-muted'"></i>
+            </ng-container>
+          </div>
+
+          <p [ngClass]="{'text-success': product.stock > 0, 'text-danger': product.stock === 0}">
+            {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+          </p>
+
+          <div>
+            <button class="btn btn-success w-100"
+                    (click)="addToCart(product); $event.stopPropagation()"
+                    [disabled]="product.stock === 0">
+              <i class="bi bi-cart"></i> Add to Cart
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noResults>
+    <p class="text-center text-danger mt-4">No products found matching your search.</p>
+  </ng-template>
+</div> 

@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">Want to contact us?</h2>
+  <p class="text-center">Happy to know that! Please write your message</p>
+
+  <div class="row align-items-center">
+      <!-- Left Side: Large Image -->
+      <div class="col-lg-6 col-md-12 d-flex justify-content-center">
+          <img src="../../assets/images/Questions-pana.png" 
+               alt="Contact Us" 
+               class="img-fluid rounded  "
+               style="width: 90%; max-height: 500px; object-fit: cover;">
+      </div>
+
+      <!-- Right Side: Form (Separate Background) -->
+      <div class="col-lg-6 col-md-12">
+          <div class="p-5 border rounded shadow-lg bg-light">
+              <form (submit)="submitForm()">
+                  <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" id="name" class="form-control" [(ngModel)]="name" required>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="email" id="email" class="form-control" [(ngModel)]="email" required>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="message" class="form-label">Message</label>
+                      <textarea id="message" class="form-control" rows="4" [(ngModel)]="message" required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-warning w-100">Send Message</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

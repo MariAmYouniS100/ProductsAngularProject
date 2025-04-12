@@ -1,24 +1,63 @@
-<nav class="navbar shadow navbar-expand-lg navbar-light bg-dark">
-    <div class="container">
-      <a class="navbar-brand logo" href="#">
-        <i class="fa-solid fa-store fa-sm" style="color: #fab005;"></i> 
-        Mariamzz
-      </a>
+<nav class="navbar shadow navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand logo d-flex align-items-center gap-1" href="#" 
+       style="font-weight: bold; font-size: 1.5rem; color: #fab005;">
+      <i class="fa-solid fa-store fa-lg"></i> 
+      <span style="color: #fab005;">Mariam's</span> 
+      <span style="color: #232323; font-size: smaller; font-weight: 300;">Shop</span>
+    </a>
+
+    <!-- Right Section -->
+    <div class="d-flex align-items-center ms-auto">
+      <!-- Search Bar -->
+      <form class="d-flex" style="width: 85%; margin-right: 20px;" (submit)="searchProducts()">
+        <input class="form-control me-2" 
+               type="search" 
+               placeholder="Search Products"
+               [(ngModel)]="searchQuery"
+               name="searchQuery" required> 
+        
+        <button class="btn btn-outline-warning" type="submit">
+          Search
+        </button>
+      </form>
       
-      <ul class="navbar-nav ml-auto">
+
+      <!-- Navigation Links -->
+      <ul class="navbar-nav d-flex align-items-center">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/products']" style="color: aliceblue;" routerLinkActive="active-link">Products</a>
+          <a class="nav-link " [routerLink]="['/products']" style="color: #232323;" routerLinkActive="active-link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/cart']" style="color: aliceblue;"  routerLinkActive="active-link">Cart</a>
+          <a class="nav-link" [routerLink]="['/about']" style="color: #232323;" routerLinkActive="active-link">About</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']" style="color: #232323;" routerLinkActive="active-link">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']" style="color: aliceblue;" routerLinkActive="active-link">Login</a>
+          <a class="nav-link" [routerLink]="['/cart']" style="color: #232323;" routerLinkActive="active-link">
+            <li class="nav-item position-relative">
+              <a class="nav-link" [routerLink]="['/cart']" style="color: #232323;" routerLinkActive="active-link">
+                <i class="fa-solid fa-store fa-lg"></i>
+                <span *ngIf="cartItemCount > 0" style="color:#ffffff;"class="badge position-absolute top-0 start-100 translate-middle bg-danger">
+                  {{ cartItemCount }}
+                </span>
+              </a>
+            </li> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/register']" style="color: aliceblue;"  routerLinkActive="active-link">Register</a>
+          <a class="nav-link" [routerLink]="['/login']" 
+             style="color: #232323;; border-right: 2px solid #232323;; padding-right: 10px;" 
+             routerLinkActive="active-link">Login</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/register']" 
+             style="color: #232323;; padding-left: 10px;" 
+             routerLinkActive="active-link">Register</a>
+        </li>
+        
       </ul>
     </div>
-  </nav>
-  
+  </div>
+</nav>

@@ -13,5 +13,12 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
+
+  // ✅ Lazy Loading for Better Performance
+  { path: 'search', loadComponent: () => import('./search/search.component').then(m => m.SearchComponent) },  
+  { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
+  { path: 'contact', loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent) }, // ✅ Fixed lazy loading
+
+  // ✅ Wildcard should be LAST
   { path: '**', component: NotFoundComponent }, 
 ];

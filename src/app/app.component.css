@@ -1,0 +1,7 @@
+.main-content {
+    padding-top: 80px; /* Adjust this based on your navbar height */
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh; /* Ensures the content takes full height */
+    background-color: #f8f9fa; /* Optional: Light gray background */
+  }

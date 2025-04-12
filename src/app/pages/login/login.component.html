@@ -1,7 +1,9 @@
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-lg p-4">
+  <div class="row justify-content-center align-items-center">
+    
+    <!-- Left Side: Login Form -->
+    <div class="col-lg-5">
+      <div class="p-4 bg-light">
         <h2 class="text-center mb-4">Login</h2>
 
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
@@ -18,12 +20,12 @@
               required 
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             />
-            <!-- Error Messages -->
             <small class="text-danger" *ngIf="emailRef.invalid && emailRef.touched">
               {{ emailRef.errors?.['required'] ? 'Email is required' : 'Invalid email' }}
             </small>
           </div>
 
+          <!-- Password Field -->
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input 
@@ -35,17 +37,53 @@
               #passwordRef="ngModel"
               required 
             />
-            <!-- Error Message -->
             <small class="text-danger" *ngIf="passwordRef.invalid && passwordRef.touched">
               Password is required
             </small>
           </div>
 
-          <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+          <button type="submit" class="btn btn-warning w-100 mb-3" style="color: #ffffff; font-weight: bold;" [disabled]="loginForm.invalid">
             Login
           </button>
+
+          <!-- Social Login Buttons -->
+          <div class="text-center mb-3">
+            <p>Or login with:</p>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-danger rounded p-2">
+                <i class="fab fa-google fa-lg"></i>
+              </button>
+              <button class="btn btn-primary rounded p-2">
+                <i class="fab fa-facebook-f fa-lg"></i>
+              </button>
+              <button class="btn btn-info rounded p-2">
+                <i class="fab fa-twitter fa-lg" style="color: #ffffff;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Register Link -->
+          <p class="text-center mt-3">
+            Don't have an account? 
+            <a routerLink="/register" class="text-warning text-decoration-none">Sign up here</a>
+          </p>
+
         </form>
       </div>
     </div>
+
+    <!-- Vertical Divider Line -->
+    <div class="col-lg-1 d-flex justify-content-center">
+      <div class="border-end" style="height: 100%; width: 2px; background-color: #ddd;"></div>
+    </div>
+
+    <!-- Right Side: Image -->
+    <div class="col-lg-5 text-center">
+      <img src="../../../assets/images/Mobile login-amico.png" 
+           alt="Login Illustration" 
+           class="img-fluid"
+           style="max-width: 90%; height: auto;">
+    </div>
+
   </div>
 </div>

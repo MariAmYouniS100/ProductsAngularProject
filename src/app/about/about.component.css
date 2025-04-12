@@ -1,0 +1,21 @@
+.about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #ff6f00;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  

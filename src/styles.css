@@ -25,4 +25,11 @@ html, body {
     color: white;
     text-align: center;
   }
-  @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@700&display=swap');
+  @font-face {
+    font-family: 'Jost';
+    src: url('/assets/fonts/Jost-Regular.woff2') format('woff2'),
+         url('/assets/fonts/Jost-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

@@ -1,8 +1,23 @@
 <div class="container mt-5 mb-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-lg p-4">
-        <h2 class="text-center mb-4">Register</h2>
+  <div class="row justify-content-center align-items-center">
+    
+    <!-- Left Side: Image -->
+    <div class="col-lg-5 text-center">
+      <img src="../../../assets/images/Upgrade-cuate.png" 
+           alt="Register Illustration" 
+           class="img-fluid"
+           style="max-width: 90%; height: auto;">
+    </div>
+
+    <!-- Vertical Divider Line -->
+    <div class="col-lg-1 d-flex justify-content-center">
+      <div class="border-end" style="height: 100%; width: 2px; background-color: #ddd;"></div>
+    </div>
+
+    <!-- Right Side: Register Form -->
+    <div class="col-lg-5">
+      <div class="p-4 bg-light  ">
+        <h2 class="text-center mb-4">Join Us</h2>
 
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           
@@ -67,9 +82,17 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Register</button>
+          <button type="submit" class="btn btn-warning w-100 mb-3" style="color: rgb(255, 255, 255); font-weight: bold;" [disabled]="registerForm.invalid">Register</button>
+
+          <!-- Login Link -->
+          <p class="text-center mt-3">
+            Already have an account? 
+            <a routerLink="/login" class="text-warning text-decoration-none">Login here</a>
+          </p>
+          
         </form>
       </div>
     </div>
+
   </div>
 </div>
